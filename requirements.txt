@@ -1,0 +1,10 @@
+python-chess>=1.999
+PyYAML>=6.0
+# Optional, only needed for --source vision (screen capture board recognition):
+mss>=9.0
+opencv-python>=4.9
+numpy>=1.26
+# Optional, Windows only: the desktop app window (app.py) and exe packaging.
+# On Linux use the browser overlay instead (see README) - no extra deps needed.
+# pywebview>=5.0
+# pyinstaller>=6.0

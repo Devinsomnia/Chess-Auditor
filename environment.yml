@@ -1,0 +1,21 @@
+# Recreate the conda environment for chess-auditor with:
+#   conda env create -f environment.yml
+# (then:  conda activate chessauditor)
+#
+# To update an existing env after changing this file:
+#   conda env update -f environment.yml --prune
+name: chessauditor
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - python-chess>=1.999
+      - PyYAML>=6.0
+      - mss>=9.0
+      - opencv-python>=4.9
+      - numpy>=1.26
+      # Desktop app window + exe packaging (Windows):
+      - pywebview>=5.0
+      - pyinstaller>=6.0

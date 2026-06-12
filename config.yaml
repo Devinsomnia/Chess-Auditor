@@ -1,0 +1,42 @@
+﻿# chess-auditor configuration
+
+engine:
+  # Path to the Stockfish executable. Leave as "stockfish" to use PATH,
+  # or give a full path e.g. C:\tools\stockfish\stockfish.exe
+  # (setup-windows.ps1 / setup-linux.sh fill this in automatically)
+  path: stockfish
+  # Time budget per position in milliseconds. This is the main latency knob:
+  # lower = faster/snappier, higher = stronger. 300 ms is near-instant and
+  # already very strong. Set to 0 to use a fixed `depth` instead.
+  movetime_ms: 150
+  depth: 18          # only used when movetime_ms is 0
+  threads: 2         # leave CPU headroom for the UI (prevents "not responding")
+  hash_mb: 256
+  multipv: 1         # set >1 to expose alternative lines later
+
+server:
+  host: 127.0.0.1
+  port: 8765
+
+analysis:
+  # Piece types to watch for danger (yellow). king is always included.
+  watch_roles: [queen, rook, knight, bishop]
+  # Warn when our queen and king share a line exploitable by an enemy slider.
+  warn_queen_king_alignment: true
+
+app:
+  # Window style when launching ChessAuditor.exe (override with --mode):
+  #   desktop = frameless, auto-sized widget on your screen
+  #   obs     = normal titled window you can minimize/move; point OBS at the URL
+  mode: desktop
+  # Keep the desktop widget in front of all other windows (e.g. over your
+  # game/browser while you play). false = behaves like a normal window.
+  always_on_top: false
+
+logging:
+  max_games: 10      # keep only the N most recent game logs; older ones are deleted
+
+display:
+  # "white" / "black" -> that side renders at the bottom (your player).
+  # "auto" -> the side to move renders at the bottom.
+  our_color: white
